@@ -1,5 +1,3 @@
-[![Test Badge](https://decomp.dev/static/images/decomp-logo.svg)](https://decomp.dev)
-
 # Super Monkey Ball Decompilation
 
 This repo contains a WIP disassembly/decompilation of the program code of Super Monkey Ball NTSC-U version (GMBE8P).

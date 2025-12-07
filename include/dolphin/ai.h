@@ -9,7 +9,7 @@ typedef void (*AIDCallback)();
 AIDCallback AIRegisterDMACallback(AIDCallback);
 void AIInitDMA(u32 start_addr, u32 length);
 void AIStartDMA(void);
-AIDCallback AIRegisterStreamCallback(AIDCallback);
+AISCallback AIRegisterStreamCallback(AISCallback callback);
 u32 AIGetStreamSampleCount(void);
 void AIResetStreamSampleCount(void);
 void AISetStreamPlayState(u32 state);

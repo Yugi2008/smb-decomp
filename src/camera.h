@@ -131,7 +131,7 @@ void setup_camera_viewport(int cameraId, float left, float top, float width, flo
 void camera_setup_splitscreen_viewports(int playerCount);
 void camera_setup_singleplayer_viewport(void);
 void camera_apply_viewport(int);
-void u_call_camera_apply_viewport();
+void u_call_camera_apply_viewport(int player);
 // ? camera_apply_viewport_2();
 void func_800188A8(int cameraId);
 void func_800188D4(void);

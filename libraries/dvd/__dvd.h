@@ -7,6 +7,15 @@ struct bb2struct
 	void* FSTLocationInRam;
 };
 
-void DVDReadAbsAsyncForBS(void *, struct bb2struct *, int, int, void (*)());
+void DVDReadAbsAsyncForBS(void *addr,
+						  struct bb2struct *bb2,
+						  int length,
+						  int offset,
+						  void (*cb)(s32 result, void *arg));
+
+void DVDReadDiskID(void *block,
+				   DVDDiskID *id,
+				   void (*cb)(s32 result, void *arg));
+
 void DVDReset(void);
-void DVDReadDiskID(void *, DVDDiskID *, void (*)());
+

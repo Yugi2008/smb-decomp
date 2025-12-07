@@ -1404,7 +1404,7 @@ int course_floor_count(int difficulty, int flags)
 }
 #pragma force_active reset
 
-u32 is_final_floor(int difficulty, int floor, int flags)
+u32 is_final_floor(s32 difficulty, s32 floor, u32 flags)
 {
     int final = course_floor_count(difficulty, flags);
 
@@ -1413,6 +1413,7 @@ u32 is_final_floor(int difficulty, int floor, int flags)
     else
         return FALSE;
 }
+
 
 u32 is_bonus_stage(int stageId)
 {

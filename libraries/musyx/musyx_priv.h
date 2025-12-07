@@ -247,7 +247,7 @@ void voiceKillSound(int);
 // ? voiceInitLastStarted();
 // ? sndPitchUpOne();
 // ? sndGetPitch();
-u16 adsrConvertTimeCents();
+u16 adsrConvertTimeCents(u16 timeCents);
 // ? salChangeADSRState();
 // ? adsrSetup();
 // ? adsrStartRelease();

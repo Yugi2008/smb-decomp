@@ -77,9 +77,9 @@ char *goalModelNames[] =
     "GOAL_R",
 };
 
-void u_bonus_wave_warp_callback_1();
-void u_bonus_wave_warp_callback_2();
-u32 bonus_wave_raycast_down();
+void u_bonus_wave_warp_callback_1(struct NlVtxTypeB *vtxp);
+void u_bonus_wave_warp_callback_2(struct NlVtxTypeA *vtxp);
+u32 bonus_wave_raycast_down(Point3d *rayOrigin, Point3d *outHitPos, Vec *outHitNormal);
 
 void ev_stage_init(void)
 {
@@ -1613,8 +1613,8 @@ struct
 } lbl_8020ADE4;
 FORCE_BSS_ORDER(lbl_8020ADE4)
 
-extern void u_some_stage_vtx_callback_1();
-extern void u_some_stage_vtx_callback_2();
+extern void u_some_stage_vtx_callback_1(struct NlVtxTypeB *vtx);
+extern void u_some_stage_vtx_callback_2(struct NlVtxTypeA *vtx);
 
 float func_80046884(struct NlModel *model)
 {
@@ -1626,7 +1626,7 @@ float func_80046884(struct NlModel *model)
     return lbl_8020ADE4.unk10;
 }
 
-void u_some_stage_vtx_callback_1(Point3d *vtx)
+void u_some_stage_vtx_callback_1(struct NlVtxTypeB *vtx)
 {
     Vec spC;
     float f1;
@@ -1641,7 +1641,7 @@ void u_some_stage_vtx_callback_1(Point3d *vtx)
     lbl_8020ADE4.unk10 = mathutil_sqrt(f1);
 }
 
-void u_some_stage_vtx_callback_2(Point3d *vtx) // duplicate of u_some_stage_vtx_callback_1
+void u_some_stage_vtx_callback_2(struct NlVtxTypeA *vtx) // duplicate of u_some_stage_vtx_callback_1
 {
     Vec spC;
     float f1;
@@ -2001,7 +2001,7 @@ void stage_draw(void)
     struct AnimGroupInfo *animGrp;
     struct StageAnimGroup *r27;
     int i;
-    int (*r25)();
+    int (*r25)(struct NlModel *faceModel, struct NlModel *altModel);
     struct Struct80092F90 sp7C;
     Mtx sp4C;
     u8 dummy[8];

@@ -49,7 +49,7 @@ enum
 struct BackgroundInfo  // size = 0xA8
 {
     s16 bgId;
-    float animTimer; // Current animation time in frames
+    float animTimer;
     u32 unk8;
     GXColor backdropColor;
     u8 filler10[0x14-0x10];
@@ -59,19 +59,20 @@ struct BackgroundInfo  // size = 0xA8
     Vec unk38;
     u8 filler44[4];
     Mtx unk48;
-    int (*unk78)();
-    int (*unk7C)();
+    int (*unk78)(struct NlModel *, struct NlModel *);
+    int (*unk7C)(struct NlModel *, struct NlModel *);
     struct NlModel *unk80;
     float unk84;
     u8 filler88[4];
     BallEnvFunc unk8C;
-    void (*unk90)();
+    BallEnvFunc unk90;
     /*0x94*/ BallEnvFunc ballEnvFunc;
     void (*unk98)(void);
     void *work;
     u32 unkA0;
     u32 unkA4;
 };
+
 
 enum
 {
@@ -183,8 +184,8 @@ struct BGEndWork
     struct GMAModel *waterModel;
     GXTexObj *waterSpecTex;
     GXTexObj *cloudTex;
-    void (*unk14)();
-    void (*unk18)();
+    BallEnvFunc unk14;
+    BallEnvFunc unk18;
     Vec unk1C;
     float unk28;
     float unk2C;
@@ -339,7 +340,9 @@ void bg_default_finish(void);
 void bg_default_draw(void);
 void bg_default_interact(int);
 void animate_bg_objects(struct StageBgObject *bgModels, int bgModelCount, float timeSeconds);
-void draw_bg_objects();
+void draw_bg_objects(Mtx viewFromWorld,
+                     struct StageBgObject *bgObj,
+                     int bgObjCount);
 void draw_bg_flipbooks(Mtx a, struct StageFlipbookAnims *b);
 void bg_night_init(void);
 void bg_night_main(void);
@@ -438,7 +441,7 @@ void bg_old_water_main(void);
 void bg_old_water_finish(void);
 void bg_old_water_draw(void);
 void bg_old_water_interact(int);
-int func_8005AD80();
+int func_8005AD80(struct NlModel *faceModel, struct NlModel *altModel);
 int func_8005AE1C(struct NlModel *, struct NlModel *);
 void bg_jungle_init(void);
 void bg_jungle_main(void);

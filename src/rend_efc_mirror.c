@@ -454,8 +454,10 @@ u32 lbl_8009825C()
     return 1;
 }
 
-int lbl_80098264()
+int lbl_80098264(struct NlMesh *mesh, unsigned int dispListSize)
 {
+    (void)mesh;
+    (void)dispListSize;
     return 1;
 }
 

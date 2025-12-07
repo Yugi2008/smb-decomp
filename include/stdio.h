@@ -20,7 +20,7 @@ typedef struct
     unsigned char filler2C[0x30-0x2C];
     int unk30;
     unsigned char filler34[0x3C-0x34];
-    int (*unk3C)();
+    int (*unk3C)(int arg0, int arg1, void *arg2, int arg3);
     unsigned char filler40[4];
     int unk44;
 } FILE;

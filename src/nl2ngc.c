@@ -1688,7 +1688,10 @@ void nl2ngc_draw_all_model_meshes_alpha(struct NlModel *model)
     unk_empty();
 }
 
-void u_nl2ngc_draw_model_with_mesh_func(struct NlModel *model, int (*func)())
+void u_nl2ngc_draw_model_with_mesh_func(
+    struct NlModel *model,
+    int (*func)(struct NlMesh *mesh, unsigned int dispListSize)
+)
 {
     struct NlMesh *mesh;
 

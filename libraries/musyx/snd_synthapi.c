@@ -1,23 +1,25 @@
 #include <musyx/musyx.h>
 #include "musyx_priv.h"
 
-bool sndFXCtrl(SND_VOICEID vid, u8 ctrl, u8 value)
+int sndFXCtrl(SND_VOICEID vid, u8 ctrl, u8 value)
 {
-    bool ret;
+    int ret;
 
     hwDisableIrq();
     ret = synthFXSetCtrl(vid, ctrl, value);
     hwEnableIrq();
+
     return ret;
 }
 
-bool sndFXCtrl14(SND_VOICEID vid, u8 ctrl, u16 value)
+int sndFXCtrl14(SND_VOICEID vid, u8 ctrl, u16 value)
 {
-    bool ret;
+    int ret;
 
     hwDisableIrq();
     ret = synthFXSetCtrl14(vid, ctrl, value);
     hwEnableIrq();
+
     return ret;
 }
 

@@ -171,7 +171,10 @@ void nl2ngc_set_fog_color(int r, int g, int b);
 void nl2ngc_draw_opaque_model_meshes(struct NlModel *);
 void nl2ngc_draw_translucent_model_meshes(struct NlModel *);
 void nl2ngc_draw_all_model_meshes_alpha(struct NlModel *);
-void u_nl2ngc_draw_model_with_mesh_func(struct NlModel *a, int (*func)());
+void u_nl2ngc_draw_model_with_mesh_func(
+    struct NlModel *a,
+    int (*func)(struct NlMesh *mesh, unsigned int dispListSize)
+);
 void unk_empty(void);
 
 #endif

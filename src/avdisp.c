@@ -28,7 +28,7 @@ static u32 s_lightMask;
 static float s_boundSphereScale;
 static GXCullMode s_cullMode;
 static BallEnvFunc lbl_802F20EC;
-static Func802F20F0 u_customMaterialFunc;
+Func802F20F0 u_customMaterialFunc;
 static float u_someColorScaleR;
 static float u_someColorScaleG;
 static float u_someColorScaleB;
@@ -1323,7 +1323,7 @@ struct GMAShape *draw_shape(struct GMAModel *model, struct GMAShape *shape, stru
     {
         sp20.shape = shape;
         sp20.modelTevs = modelTevs;
-        doDraw = u_customMaterialFunc(&sp20);
+        doDraw = ((int (*)(void *))u_customMaterialFunc)(&sp20);
     }
     else
     {
@@ -1458,7 +1458,7 @@ void *draw_shape_reflection_maybe(struct GMAShape *shape, void *modelSamplers, s
     {
         sp20.shape = shape;
         sp20.modelTevs = modelSamplers;
-        bvar = u_customMaterialFunc(&sp20);
+        bvar = ((int (*)(void *))u_customMaterialFunc)(&sp20);
     }
     else
     {

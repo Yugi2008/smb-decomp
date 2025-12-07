@@ -46,7 +46,7 @@ void ev_course_dest(void);
 int u_get_stage_time_limit(void);
 int floor_to_stage_id(int, int, int);
 int course_floor_count(int, int);
-u32 is_final_floor();
+u32 is_final_floor(s32 difficulty, s32 floor, u32 flags);
 u32 is_bonus_stage(int stageId);
 int func_800673BC(void);
 int is_minigame_unlocked(int);

@@ -1,9 +1,39 @@
 #include <dolphin/card.h>
-
 #include <dolphin/OSReset.h>
 #include <dolphin/dsp.h>
 #include <dolphin/os.h>
 #include <stddef.h>
+
+typedef void (*EXICallback)(s32 chan, OSContext *context);
+
+// Basic EXI API
+BOOL EXISelect(s32 chan, u32 dev, u32 freq);
+BOOL EXIDeselect(s32 chan);
+
+BOOL EXIImm(s32 chan, void *buf, s32 len, s32 type, EXICallback callback);
+BOOL EXIImmEx(s32 chan, void *buf, s32 len, s32 type);
+
+BOOL EXISync(s32 chan);
+
+BOOL EXIDma(s32 chan, void *buf, s32 len, s32 mode, EXICallback callback);
+
+BOOL EXILock(s32 chan, u32 dev, EXICallback unlockCB);
+BOOL EXIUnlock(s32 chan);
+
+BOOL __EXIProbe(s32 chan);
+
+void EXISetExiCallback(s32 chan, EXICallback cb);
+
+// ---- OS / alarm shims (if you haven't already added them) ----
+// (keep these if they're already in the file; don't duplicate)
+
+void OSInitAlarm(void);
+void OSCancelAlarm(OSAlarm *alarm);
+void OSCreateAlarm(OSAlarm *alarm);
+void OSRegisterResetFunction(OSResetFunctionInfo *);
+
+void OSInitThreadQueue(OSThreadQueue *queue);
+void OSSleepThread(OSThreadQueue *queue);
 
 CARDControl __CARDBlock[2];
 DVDDiskID __CARDDiskNone;

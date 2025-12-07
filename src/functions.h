@@ -2,6 +2,10 @@
 #define _SRC_FUNCTIONS_H_
 
 #include "types.h"
+struct AnimJoint;
+struct NlModel;
+struct Struct80048084;
+struct GMAModel;
 
 // ? main();
 void initialize(void);
@@ -58,8 +62,10 @@ float func_8000E4D0(Vec *);
 float func_8000E53C(Vec *pos);
 
 void u_reset_gamedata(void);
-void u_store_gamedata();
-void u_load_gamedata();
+
+struct MemcardGameData;
+void u_store_gamedata(struct MemcardGameData *data);
+void u_load_gamedata(struct MemcardGameData *data);
 
 void mode_sel_func(void);
 void func_800123DC(void);
@@ -103,7 +109,7 @@ void func_8002FD68(int, const char *);
 void func_8002FFEC(void);
 // ? func_80030030();
 void u_debug_printf(const char *, ...);
-void u_debug_print();
+void u_debug_print(const char* text);
 void func_8003026C(int, char *, ...);
 // ? func_80030310();
 // ? func_800304E0();
@@ -127,7 +133,7 @@ void func_800355B8(struct Struct8003699C_child *);
 void func_800355FC(struct Struct8003699C_child *);
 
 void func_80035648(struct Struct8003699C_child *);
-void u_joint_tree_calc_some_matrix();
+void u_joint_tree_calc_some_matrix(struct AnimJoint *joints, struct AnimJoint *root);
 // ? u_joint_tree_calc_some_other_matrix();
 // ? func_80035DEC();
 // ? func_80035E7C();
@@ -147,7 +153,11 @@ void u_apply_func_to_nl_model_vertices(struct NlModel *model, void (*b)(struct N
 void u_apply_func_to_nl_disp_list_type_b(struct NlDispList *dl, void *end, void (*func)(struct NlVtxTypeB *));
 void u_apply_func_to_nl_disp_list_type_a(struct NlDispList *dl, void *end, void (*func)(struct NlVtxTypeA *));
 // ? func_80048084();
-void func_80048420();
+
+void func_80048420(struct NlModel *arg0,
+                   struct Struct80048084 *arg1,
+                   float *arg2);
+
 
 void monkey_sprite_draw(struct Sprite *);
 int u_get_monkey_bitmap_id(int, int, int);
@@ -279,7 +289,7 @@ void avdisp_set_bound_sphere_scale(float);
 void avdisp_set_ambient(float, float, float);
 void avdisp_draw_model_culled_sort_translucent(struct GMAModel *);
 void avdisp_draw_model_culled_sort_none(struct GMAModel *);
-void avdisp_draw_model_culled_sort_all();
+void avdisp_draw_model_culled_sort_all(struct GMAModel *model);
 void avdisp_set_alpha(float alpha);
 void avdisp_set_light_mask(u32 lightMask);
 void avdisp_set_inf_light_dir(Vec *a);
@@ -360,8 +370,8 @@ void submode_mini_ending_main_func(void);
 void u_draw_ending_viewer_text(void);
 void func_800940B8(void);
 void func_800940E0(void);
-void u_something_with_lens_flare_2();
-void u_something_with_lens_flare_1();
+void u_something_with_lens_flare_2(int idx);
+void u_something_with_lens_flare_1(int idx);
 void func_800946BC(Vec *);
 void func_800946DC(int, int);
 void func_80094748(float);

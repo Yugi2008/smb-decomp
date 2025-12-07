@@ -1269,7 +1269,7 @@ extern u32 *motLabel;
 // extern ? modelScale;
 // extern ? s_u_cullMode;
 // extern ? lbl_802F20EC;
-// extern ? u_customMaterialFunc;
+extern Func802F20F0 u_customMaterialFunc;
 // extern ? u_someColorScaleR;
 // extern ? u_someColorScaleG;
 // extern ? u_someColorScaleB;

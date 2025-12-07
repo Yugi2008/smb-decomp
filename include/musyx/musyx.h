@@ -3,7 +3,11 @@
 
 #include <dolphin/types.h>
 
+
+#if !defined(__STDC_VERSION__) || __STDC_VERSION__ < 202000L
 typedef int bool;
+#endif
+
 
 #define SND_AUX_NUMPARAMETERS 4
 
@@ -125,15 +129,42 @@ bool sndAuxCallbackShutdownReverbHI(SND_AUX_REVERBHI *rev);
 typedef void (*SND_AUX_CALLBACK)(u8 reason, SND_AUX_INFO *info, void *user);
 
 void sndAuxCallbackChorus(u8 reason, SND_AUX_INFO *info, void *user);
-void sndAuxCallbackPrepareChorus();
-void sndOutputMode();
-void sndActive();
-int sndPushGroup();
+void sndAuxCallbackPrepareChorus(void *work);
+void sndOutputMode(SND_OUTPUTMODE output);
+void sndActive(int a, int b, int c, int d, int e);
+int sndPushGroup(
+    void *projData,
+    int   groupId,
+    void *sampData,
+    void *dirData,
+    void *poolData
+);
 void sndPopGroup(void);
 SND_VOICEID sndFXCheck(SND_VOICEID arg0);
 bool sndFXKeyOff(SND_VOICEID vid);
-void sndStreamFree();
-int sndStreamAllocEx();
+void sndStreamFree(int handle);
+int sndStreamAllocEx(
+    int          streamId,
+    void        *buffer,
+    int          bufferSize,
+    int          sampleRate,
+    int          volumeL,
+    int          volumeR,
+    int          a6,
+    int          a7,
+    int          a8,
+    int          a9,
+    int          a10,
+    unsigned long (*callback)(
+    unsigned char *arg0,
+    unsigned long   arg1,
+    int             unused1,
+    int             unused2,
+    long            arg4
+    ),
+    int          a12,
+    int          a13
+);
 void sndSetAuxProcessingCallbacks(u8 studio, 
                                   SND_AUX_CALLBACK auxA, void *userA, u8 midiA, SND_SEQID seqIDA,
                                   SND_AUX_CALLBACK auxB, void *userB, u8 midiB, SND_SEQID seqIDB);

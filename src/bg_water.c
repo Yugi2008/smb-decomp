@@ -17,6 +17,8 @@
 #include "mode.h"
 #include "stage.h"
 
+struct EnvMapSomething;
+
 static struct BGModelSearch waterBgModelFind[] =
 {
     { BG_MDL_CMP_FULL,   "WAT_SUIMEN_MAT_ONLY" },
@@ -43,7 +45,7 @@ static struct BGModelSearch waterBgObjFind[] =
 
 static void lbl_8005E914(void);
 static void lbl_8005E998(struct EnvMapSomething *);
-static void lbl_8005EB8C();
+static void lbl_8005EB8C(struct EnvMapSomething *arg0);
 static void func_8005ED80(struct EnvMapSomething *);
 static void lbl_8005F124(struct EnvMapSomething *);
 static void lbl_8005F520(struct EnvMapSomething *);

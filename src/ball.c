@@ -422,7 +422,7 @@ void func_8003765C(struct Ape *ape)
 // needed here due to float constant ordering
 static float get_0_05(void) {return 0.05f;}
 
-void func_80037718(/* struct Ape *unused */)
+void func_80037718(void *ape)
 {
     Quaternion sp30;
     Vec sp24;
@@ -1086,7 +1086,7 @@ void ball_draw(void)
     struct Ball *ball;
     s8 *r27;
     int i;
-    int (*func)();
+    int (*func)(struct NlModel *faceModel, struct NlModel *altModel);
     BallEnvFunc envFunc;
     int unused;
 
@@ -3097,11 +3097,14 @@ void draw_ball_hemispheres(struct Ball *ball, int unused)
 void ball_draw_callback(struct BallDrawNode *node)
 {
     struct Ball *ball = &ballInfo[node->ballId];
-    int (*r30)() = backgroundInfo.unk7C;
+    int (*r30)(struct NlModel *faceModel, struct NlModel *altModel) = backgroundInfo.unk7C;
     BallEnvFunc envFunc;
 
-    if (gameMode == MD_GAME && modeCtrl.gameType == GAMETYPE_MAIN_COMPETITION && modeCtrl.playerCount > 3)
-        r30 = NULL;
+    if (r30(NLOBJ_MODEL(g_commonNlObj, NLMODEL_common_BSKBALL_FACE), lbl_802F1B4C) != 0){
+       r30 = NULL;
+
+    }
+
 
     load_light_group_cached(node->unk8);
     mathutil_mtxA_from_mtxB();

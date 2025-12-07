@@ -212,7 +212,7 @@ void (*bgInteractFuncs[])(int) =
     NULL,
 };
 
-int (*lbl_801B96CC[])() =
+static int (*lbl_801B96CC[])(struct NlModel *, struct NlModel *) =
 {
     NULL,
     NULL,
@@ -1219,12 +1219,16 @@ void bg_bowling_interact(int a) {}
 
 int func_80056610(struct NlModel *a, struct NlModel *b)
 {
+    struct Struct80048084 *dst = (struct Struct80048084 *) b;
     float sp10 = backgroundInfo.unk84;
-    memcpy(b, a, NLMODEL_HEADER(a)->unk4->modelSize);  // WTF???
+
+    memcpy(dst, a, NLMODEL_HEADER(a)->unk4->modelSize);
     mathutil_mtxA_mult_left(backgroundInfo.unk48);
-    func_80048420(b, backgroundInfo.unk80, &sp10);
+    func_80048420(backgroundInfo.unk80, dst, &sp10);
+
     return 1;
 }
+
 
 // Finds the specified models in the current background's GMA
 void find_background_gma_models(struct BGModelSearch *searchList, BgModelFindProc proc)

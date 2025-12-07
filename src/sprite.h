@@ -313,7 +313,7 @@ void set_text_add_color(u32 color);
 void func_80071B1C(float);
 void set_text_scale(float scaleX, float scaleY);
 void set_text_opacity(float opacity);
-void func_80071B50();
+void func_80071B50(int a);
 void set_text_pos(float x, float y);
 void u_draw_char(char chr);
 void u_draw_text(char *str);

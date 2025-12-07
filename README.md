@@ -1,3 +1,4 @@
+[![SMB Decomp Progress](https://decomp.dev/api/projects/smb-gc/badge.svg)](https://decomp.dev/projects/smb-gc)
 # Super Monkey Ball Decompilation
 
 This repo contains a WIP disassembly/decompilation of the program code of Super Monkey Ball NTSC-U version (GMBE8P).
